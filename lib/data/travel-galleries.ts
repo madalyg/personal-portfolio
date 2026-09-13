@@ -15,7 +15,7 @@ export const travelGalleries: TravelGallery[] = [
   {
     slug: "denver-colorado",
     location: "Denver, Colorado",
-    images: buildImages("denver-colorado", 8),
+    images: buildImages("denver-colorado", 7),
   },
   {
     slug: "washington-dc",
