@@ -51,8 +51,9 @@ export function Hero() {
               Engineering program, where I will focus on autonomous spacecraft
               systems.
               */}
-              Software engineer and computational physicist building systems at
-              the intersection of code, physics, and hardware. With 7+ years of
+              Software engineer and computational physicist building systems
+              combining code, the physics of our universe, and hardware. With
+              7+ years of
               programming experience, 2+ years of Fortune 500 full-stack
               software engineering and a recent B.S. in Physics, I&apos;ve
               presented
