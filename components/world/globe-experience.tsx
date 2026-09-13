@@ -11,8 +11,11 @@ import {
   BackSide,
   Color,
   DirectionalLight,
+  Group,
   Mesh,
   MeshPhongMaterial,
+  Raycaster,
+  Vector2,
 } from "three";
 import type { GlobeMethods } from "react-globe.gl";
 import {
@@ -21,6 +24,18 @@ import {
   type PdfTravelNotebook,
   type TravelNotebook,
 } from "@/lib/data/travel-notebooks";
+import { GlobeViewfinder } from "@/components/world/globe-viewfinder";
+import {
+  flyToDoor,
+  flyToGlobe,
+  GLOBE_RETURN_MS,
+  lockOrbitTargetToDoor,
+  waitForCameraFlight,
+} from "@/components/world/globe-door-travel";
+import {
+  createSpaceDoor,
+  disposeSpaceDoor,
+} from "@/components/world/space-door";
 
 const Globe = dynamic(
   () => import("three").then(() => import("react-globe.gl")),
@@ -83,7 +98,11 @@ function resolveGalleryUrl(
 export function GlobeExperience() {
   const containerRef = useRef<HTMLDivElement>(null);
   const globeRef = useRef<GlobeMethods | undefined>(undefined);
+  const doorRef = useRef<Group | null>(null);
   const resumeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const viewModeRef = useRef<"globe" | "door">("globe");
+  const transitioningRef = useRef(false);
+  const unlockDoorTargetRef = useRef<(() => void) | null>(null);
 
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [locations, setLocations] = useState<LocationPoint[] | null>(null);
@@ -194,9 +213,12 @@ export function GlobeExperience() {
       if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
     };
     const scheduleResume = () => {
+      if (viewModeRef.current === "door") return;
       if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
       resumeTimeout.current = setTimeout(() => {
-        controls.autoRotate = true;
+        if (viewModeRef.current === "globe") {
+          controls.autoRotate = true;
+        }
       }, 3000);
     };
 
@@ -210,6 +232,92 @@ export function GlobeExperience() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locations, globeReady]);
+
+  // White door floating far out in the starfield behind the globe.
+  useEffect(() => {
+    const globe = globeRef.current;
+    if (!globe || !globeReady) return;
+
+    const door = createSpaceDoor();
+    doorRef.current = door;
+    globe.scene().add(door);
+
+    return () => {
+      doorRef.current = null;
+      globe.scene().remove(door);
+      disposeSpaceDoor(door);
+    };
+  }, [globeReady]);
+
+  async function travelToDoor() {
+    const globe = globeRef.current;
+    const door = doorRef.current;
+    if (!globe || !door || transitioningRef.current || viewModeRef.current === "door") {
+      return;
+    }
+
+    transitioningRef.current = true;
+    if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
+    await flyToDoor(globe, door);
+    unlockDoorTargetRef.current?.();
+    unlockDoorTargetRef.current = lockOrbitTargetToDoor(globe, door);
+    viewModeRef.current = "door";
+    transitioningRef.current = false;
+  }
+
+  async function travelToGlobe() {
+    const globe = globeRef.current;
+    if (!globe || transitioningRef.current || viewModeRef.current === "globe") {
+      return;
+    }
+
+    transitioningRef.current = true;
+    unlockDoorTargetRef.current?.();
+    unlockDoorTargetRef.current = null;
+    flyToGlobe(globe);
+    await waitForCameraFlight(GLOBE_RETURN_MS);
+    viewModeRef.current = "globe";
+    transitioningRef.current = false;
+
+    const controls = globe.controls();
+    if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
+    resumeTimeout.current = setTimeout(() => {
+      if (viewModeRef.current === "globe") {
+        controls.autoRotate = true;
+      }
+    }, 3000);
+  }
+
+  // Click the space door to fly toward it.
+  useEffect(() => {
+    const globe = globeRef.current;
+    const door = doorRef.current;
+    if (!globe || !globeReady || !door) return;
+
+    const canvas = globe.renderer().domElement;
+    const raycaster = new Raycaster();
+    const mouse = new Vector2();
+
+    const handleClick = (event: MouseEvent) => {
+      if (viewModeRef.current === "door" || transitioningRef.current) return;
+
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, globe.camera());
+      const hits = raycaster.intersectObject(door, true);
+      if (hits.length > 0) {
+        event.stopPropagation();
+        void travelToDoor();
+      }
+    };
+
+    canvas.addEventListener("click", handleClick);
+    return () => canvas.removeEventListener("click", handleClick);
+    // travelToDoor is stable enough for this listener; re-bind when globe mounts.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [globeReady, locations]);
 
   const ringsData = useMemo(
     () => (locations ?? []).filter((d) => d.galleryUrl),
@@ -306,7 +414,15 @@ export function GlobeExperience() {
             return ACCENT_DIM;
           }}
           pointLabel={(d: object) => toLocationPoint(d).name}
-          onPointClick={(d: object) => setSelected(toLocationPoint(d))}
+          onPointClick={(d: object) => {
+            if (viewModeRef.current === "door" || transitioningRef.current) return;
+            setSelected(toLocationPoint(d));
+          }}
+          onGlobeClick={() => {
+            if (viewModeRef.current === "door" && !transitioningRef.current) {
+              void travelToGlobe();
+            }
+          }}
           ringsData={ringsData}
           ringLat="lat"
           ringLng="lng"
@@ -340,6 +456,8 @@ export function GlobeExperience() {
           Could not load location data.
         </div>
       )}
+
+      {locations && <GlobeViewfinder />}
 
       <div className="pointer-events-none absolute bottom-4 left-4 font-mono text-[11px] uppercase tracking-widest text-zinc-300">
         Drag to rotate · Scroll to zoom · Tap location to enter

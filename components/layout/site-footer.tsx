@@ -8,7 +8,7 @@ export function SiteFooter() {
     <footer className="border-t border-black/12 dark:border-white/12">
       <div className="container-page flex flex-col items-center gap-4 py-10 sm:flex-row sm:justify-between">
         <p className="font-mono text-sm text-zinc-700 dark:text-zinc-300">
-          © {new Date().getFullYear()} Madaly G.
+          © {new Date().getFullYear()} MG
         </p>
 
         <div className="flex items-center gap-1">
