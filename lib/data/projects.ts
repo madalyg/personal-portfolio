@@ -210,7 +210,7 @@ export const projects: Project[] = [
     title: "Portable Electric Cloud Chamber",
     categories: ["electrical-engineering"],
     summary:
-      "Designed and built a reusable, dry-ice-free cloud chamber using eight cascaded Peltier thermoelectric coolers and a closed-loop water cooling system, sustaining the −26°C gradient needed to visualize ionizing radiation tracks. Partnered withe mechanical engineer Branden Floyd who taught me how to solder, 3D print, and design the cooling system. Invited to present the device to the college's Board of Trustees, made available to students as a public demonstration tool, and awarded Outstanding STEM Project.",
+      "Designed and built a reusable, dry-ice-free cloud chamber system using eight cascaded Peltier thermoelectric coolers and a closed-loop water cooling system, sustaining the −26°C gradient needed to visualize ionizing radiation tracks inlcuding cosmic rays. Collaborated with mechanical engineer Branden Floyd who taught me how to solder, 3D print, and design the cooling system. Invited to present the device to the college's Board of Trustees, made available to students as a public demonstration tool, and awarded Outstanding STEM Project.",
     stack: ["Fusion 360 CAD", "Peltier TECs", "DC Power Systems", "3D Printing"],
     tags: [
       "Electrical Engineering",
