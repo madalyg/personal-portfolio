@@ -9,6 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
 const TRAVEL = path.join(ROOT, "public/travel");
 const GALLERIES_TS = path.join(ROOT, "lib/data/travel-galleries.ts");
+const VISITED_CSV = path.join(ROOT, "public/visited_locations.csv");
 const INDEX = path.join(__dirname, "index.html");
 const HOST = "127.0.0.1";
 const PORT = 3333;
@@ -110,6 +111,25 @@ function patchGalleriesTs(slug, files) {
     throw new Error(`Could not find ${slug} in travel-galleries.ts`);
   }
   fs.writeFileSync(GALLERIES_TS, ts.replace(re, `$1${replacement}`));
+  syncVisitedCsvGalleryUrl(slug, files.length);
+}
+
+/** Drop galleryUrl from visited_locations.csv when a gallery has no media left. */
+function syncVisitedCsvGalleryUrl(slug, fileCount) {
+  if (fileCount > 0) return;
+  const galleryPath = `/world/${slug}`;
+  const raw = fs.readFileSync(VISITED_CSV, "utf8");
+  const lines = raw.split("\n");
+  let changed = false;
+  const updated = lines.map((line, index) => {
+    if (index === 0 || !line.trim()) return line;
+    if (!line.includes(galleryPath)) return line;
+    changed = true;
+    return line.replace(galleryPath, "");
+  });
+  if (changed) {
+    fs.writeFileSync(VISITED_CSV, updated.join("\n"));
+  }
 }
 
 function parseMultipart(buf, contentType) {
