@@ -130,6 +130,22 @@ function syncVisitedCsvGalleryUrl(slug, fileCount) {
   if (changed) {
     fs.writeFileSync(VISITED_CSV, updated.join("\n"));
   }
+  writeActiveGalleriesManifest();
+}
+
+function writeActiveGalleriesManifest() {
+  const slugs = fs
+    .readdirSync(TRAVEL)
+    .filter((slug) => {
+      if (!SLUG_RE.test(slug) || slug.startsWith("_")) return false;
+      const dir = path.join(TRAVEL, slug);
+      return fs.statSync(dir).isDirectory() && listMedia(slug).length > 0;
+    })
+    .sort();
+  fs.writeFileSync(
+    path.join(TRAVEL, "active-galleries.json"),
+    `${JSON.stringify(slugs, null, 2)}\n`
+  );
 }
 
 function parseMultipart(buf, contentType) {

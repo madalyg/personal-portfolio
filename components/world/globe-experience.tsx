@@ -65,6 +65,21 @@ function highlightRingColor(t: number) {
   return `rgba(255, 65, 105, ${alpha})`;
 }
 
+function gallerySlugFromUrl(galleryUrl: string | null | undefined) {
+  if (!galleryUrl) return null;
+  const match = galleryUrl.match(/\/world\/([a-z0-9-]+)$/);
+  return match?.[1] ?? null;
+}
+
+function resolveGalleryUrl(
+  galleryUrl: string | null,
+  activeSlugs: Set<string>
+): string | null {
+  const slug = gallerySlugFromUrl(galleryUrl);
+  if (!slug || !activeSlugs.has(slug)) return null;
+  return galleryUrl;
+}
+
 export function GlobeExperience() {
   const containerRef = useRef<HTMLDivElement>(null);
   const globeRef = useRef<GlobeMethods | undefined>(undefined);
@@ -93,33 +108,73 @@ export function GlobeExperience() {
     return () => observer.disconnect();
   }, []);
 
-  // Load + parse the CSV of visited locations.
+  // Load locations from CSV, but only treat a pin as an active gallery when
+  // photos still exist on disk (active-galleries.json / API).
   useEffect(() => {
-    Papa.parse("/visited_locations.csv", {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
-      complete: (results) => {
-        const rows = (results.data as Record<string, string>[])
-          .map((row) => {
-            const lat = parseFloat(row["Latitude"]);
-            const lng = parseFloat(row["Longitude"]);
-            const name = row["Location Name"]?.trim();
-            const galleryUrl = row["galleryUrl"]?.trim() || null;
-            if (!name || Number.isNaN(lat) || Number.isNaN(lng)) return null;
-            return {
-              name,
-              lat,
-              lng,
-              galleryUrl,
-              notebooks: getNotebooksForLocation(name),
-            } as LocationPoint;
-          })
-          .filter((row): row is LocationPoint => row !== null);
-        setLocations(rows);
-      },
-      error: () => setLoadError(true),
-    });
+    let cancelled = false;
+
+    async function loadLocations() {
+      try {
+        const [csvText, activeRes] = await Promise.all([
+          fetch("/visited_locations.csv").then((r) => {
+            if (!r.ok) throw new Error("CSV fetch failed");
+            return r.text();
+          }),
+          fetch("/api/travel-galleries")
+            .then((r) => (r.ok ? r.json() : null))
+            .catch(() => null),
+        ]);
+
+        let activeSlugs = new Set<string>(
+          Array.isArray(activeRes?.slugs) ? activeRes.slugs : []
+        );
+        if (activeSlugs.size === 0) {
+          const manifest = await fetch("/travel/active-galleries.json")
+            .then((r) => (r.ok ? r.json() : []))
+            .catch(() => []);
+          if (Array.isArray(manifest)) {
+            activeSlugs = new Set(manifest);
+          }
+        }
+
+        if (cancelled) return;
+
+        Papa.parse<Record<string, string>>(csvText, {
+          header: true,
+          skipEmptyLines: true,
+          complete: (results) => {
+            if (cancelled) return;
+            const rows = results.data
+              .map((row) => {
+                const lat = parseFloat(row["Latitude"]);
+                const lng = parseFloat(row["Longitude"]);
+                const name = row["Location Name"]?.trim();
+                const rawGalleryUrl = row["galleryUrl"]?.trim() || null;
+                if (!name || Number.isNaN(lat) || Number.isNaN(lng)) return null;
+                return {
+                  name,
+                  lat,
+                  lng,
+                  galleryUrl: resolveGalleryUrl(rawGalleryUrl, activeSlugs),
+                  notebooks: getNotebooksForLocation(name),
+                } as LocationPoint;
+              })
+              .filter((row): row is LocationPoint => row !== null);
+            setLocations(rows);
+          },
+          error: () => {
+            if (!cancelled) setLoadError(true);
+          },
+        });
+      } catch {
+        if (!cancelled) setLoadError(true);
+      }
+    }
+
+    loadLocations();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   // Auto-rotate, pausing gracefully while the visitor is interacting.
