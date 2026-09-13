@@ -107,7 +107,7 @@ export function ResearchCard({ paper }: { paper: ResearchPaper }) {
     ...(paper.fileUrl
       ? [
           {
-            label: paper.fileLabel ?? "Read PDF",
+            label: paper.fileLabel ?? "Read",
             url: paper.fileUrl,
             image: paper.image,
             imageContain: paper.imageContain,
