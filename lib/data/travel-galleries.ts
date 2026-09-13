@@ -58,16 +58,11 @@ export const travelGalleries: TravelGallery[] = [
     images: buildImages("shkoder-albania", 16),
   },
   {
-    slug: "los-angeles-california",
-    location: "Los Angeles, California",
+    slug: "ybbs-an-der-donau-austria",
+    location: "Ybbs an der Donau, Austria",
     images: [
       
     ],
-  },
-  {
-    slug: "ybbs-an-der-donau-austria",
-    location: "Ybbs an der Donau, Austria",
-    images: buildImages("ybbs-an-der-donau-austria", 2),
   },
   {
     slug: "segovia-spain",
