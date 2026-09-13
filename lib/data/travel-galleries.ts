@@ -45,7 +45,7 @@ export const travelGalleries: TravelGallery[] = [
   {
     slug: "rome-italy",
     location: "Rome, Italy",
-    images: buildImages("rome-italy", 9),
+    images: buildImages("rome-italy", 10),
   },
   {
     slug: "lisbon-portugal",
