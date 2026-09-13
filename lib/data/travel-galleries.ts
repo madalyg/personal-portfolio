@@ -15,12 +15,12 @@ export const travelGalleries: TravelGallery[] = [
   {
     slug: "denver-colorado",
     location: "Denver, Colorado",
-    images: buildImages("denver-colorado", 7),
+    images: buildImages("denver-colorado", 8),
   },
   {
     slug: "washington-dc",
     location: "Washington D.C.",
-    images: buildImages("washington-dc", 9),
+    images: buildImages("washington-dc", 10),
   },
   {
     slug: "sintra-portugal",
@@ -45,7 +45,7 @@ export const travelGalleries: TravelGallery[] = [
   {
     slug: "rome-italy",
     location: "Rome, Italy",
-    images: buildImages("rome-italy", 6),
+    images: buildImages("rome-italy", 9),
   },
   {
     slug: "lisbon-portugal",
