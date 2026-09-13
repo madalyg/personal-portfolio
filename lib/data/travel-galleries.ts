@@ -20,7 +20,7 @@ export const travelGalleries: TravelGallery[] = [
   {
     slug: "washington-dc",
     location: "Washington D.C.",
-    images: buildImages("washington-dc", 10),
+    images: buildImages("washington-dc", 9),
   },
   {
     slug: "sintra-portugal",
