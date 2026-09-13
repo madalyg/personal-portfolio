@@ -40,27 +40,25 @@ export function Hero() {
               style={{ gridArea: "bio" }}
               className="animate-fade-up mx-auto max-w-2xl text-balance text-center text-lg leading-relaxed text-zinc-700 opacity-0 [animation-delay:80ms] sm:mx-0 sm:text-left sm:text-xl dark:text-zinc-300"
             >
-              {/*— a multipassionate software engineer and computational physicist*/}
+              {/*
               Multipassionate software engineer and computational physicist
-              building
-              systems at the intersection of{" "}
-              <span className="text-zinc-950 dark:text-zinc-50">code</span>,{" "}
-              <span className="text-zinc-950 dark:text-zinc-50">
-                the physics of our universe
-              </span>
-              , and{" "}
-              <span className="text-zinc-950 dark:text-zinc-50">
-                circuits
-              </span>
-              . I hold a{" "}
-              <span className="text-zinc-950 dark:text-zinc-50">
-                B.S. in Physics
-              </span>{" "}
-              and am currently preparing to transition {" "}
-              <span className="text-zinc-950 dark:text-zinc-50">
-              into an M.S. in Electrical Engineering program,  
-              </span>
-              {" "} where I will focus on autonomous spacecraft systems.
+              with 7 years of software development experience, including 2+
+              years at a Fortune 500 company, building systems at the
+              intersection of code, the physics of our universe, and circuits.
+              I hold a B.S. in Physics, have presented computational
+              astrophysics research at international conferences, and am
+              currently preparing to transition into an M.S. in Electrical
+              Engineering program, where I will focus on autonomous spacecraft
+              systems.
+              */}
+              Software engineer and computational physicist building systems at
+              the intersection of code, physics, and hardware. With 7+ years of
+              programming experience, 2+ years of Fortune 500 full-stack
+              software engineering and a recent B.S. in Physics, I&apos;ve
+              presented
+              computational astrophysics research internationally and am
+              currently preparing for graduate studies in Electrical
+              Engineering with a focus on autonomous spacecraft systems.
             </p>
 
             <div
