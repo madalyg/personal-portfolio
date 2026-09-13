@@ -55,7 +55,7 @@ export const travelGalleries: TravelGallery[] = [
   {
     slug: "shkoder-albania",
     location: "Shkoder, Albania",
-    images: buildImages("shkoder-albania", 18),
+    images: buildImages("shkoder-albania", 16),
   },
   {
     slug: "los-angeles-california",
