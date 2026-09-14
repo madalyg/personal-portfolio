@@ -1,6 +1,6 @@
 import type { GlobeMethods } from "react-globe.gl";
 import type { Group } from "three";
-import { Vector3 } from "three";
+import { PerspectiveCamera, Vector3 } from "three";
 
 export const INITIAL_GLOBE_POV = { lat: 20, lng: 10, altitude: 2.4 } as const;
 export const DOOR_FLIGHT_MS = 2800;
@@ -85,7 +85,9 @@ export function flyToGlobe(globe: GlobeMethods) {
   const globeR = globe.getGlobeRadius();
   const controls = globe.controls();
   controls.target.set(0, 0, 0);
-  controls.minDistance = globeR + Math.max(0.001, globe.camera().near * 1.1);
+  const camera = globe.camera();
+  const near = camera instanceof PerspectiveCamera ? camera.near : 0.05;
+  controls.minDistance = globeR + Math.max(0.001, near * 1.1);
   controls.maxDistance = globeR * 100;
   controls.update();
   globe.pointOfView({ ...INITIAL_GLOBE_POV }, GLOBE_RETURN_MS);
