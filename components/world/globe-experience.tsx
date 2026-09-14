@@ -13,8 +13,10 @@ import {
   DirectionalLight,
   Group,
   Mesh,
+  MeshBasicMaterial,
   MeshPhongMaterial,
   Raycaster,
+  SphereGeometry,
   Vector2,
 } from "three";
 import type { GlobeMethods } from "react-globe.gl";
@@ -36,6 +38,9 @@ import {
   createSpaceDoor,
   disposeSpaceDoor,
 } from "@/components/world/space-door";
+import { issHoverLabelHtml } from "@/components/world/iss-hover-label";
+import { useIssOrbit } from "@/components/world/use-iss-orbit";
+import type { IssPath } from "@/lib/world/satellite-orbit";
 
 const Globe = dynamic(
   () => import("three").then(() => import("react-globe.gl")),
@@ -59,6 +64,7 @@ const ACCENT = "#5eead4";
 const ACCENT_DIM = "#2dd4bf";
 const HIGHLIGHT = "#ff3864";
 const GLOBE_ATMOSPHERE = "#5ad2d6";
+const ISS_MARKER = "#fafafa";
 
 const HIGHLIGHTED_LOCATIONS = new Set([
   "Washington D.C.",
@@ -112,6 +118,23 @@ export function GlobeExperience() {
   const [openNotebooks, setOpenNotebooks] = useState<PdfTravelNotebook[] | null>(
     null
   );
+  const iss = useIssOrbit();
+
+  const issMarkerMesh = useMemo(
+    () =>
+      new Mesh(
+        new SphereGeometry(0.32, 20, 20),
+        new MeshBasicMaterial({ color: ISS_MARKER })
+      ),
+    []
+  );
+
+  const issObjectData = useMemo(() => {
+    if (!iss) return [];
+    return [{ ...iss.position, id: "iss" }];
+  }, [iss]);
+
+  const issPathsData = useMemo(() => iss?.paths ?? [], [iss?.paths]);
 
   // Measure container for a responsive canvas.
   useEffect(() => {
@@ -442,6 +465,19 @@ export function GlobeExperience() {
           ringRepeatPeriod={(d: object) =>
             isHighlightedLocation(toLocationPoint(d)) ? 1000 : 1400
           }
+          pathsData={issPathsData}
+          pathPoints={(d: object) => (d as IssPath).points}
+          pathPointLat="lat"
+          pathPointLng="lng"
+          pathPointAlt="alt"
+          pathColor={() => ["#7dd3fc", "#38bdf8"]}
+          pathStroke={0.16}
+          objectsData={issObjectData}
+          objectLat="lat"
+          objectLng="lng"
+          objectAltitude="alt"
+          objectLabel={issHoverLabelHtml}
+          objectThreeObject={issMarkerMesh}
         />
       )}
 
@@ -459,8 +495,17 @@ export function GlobeExperience() {
 
       {locations && <GlobeViewfinder />}
 
-      <div className="pointer-events-none absolute bottom-4 left-4 font-mono text-[11px] uppercase tracking-widest text-zinc-300">
-        Drag to rotate · Scroll to zoom · Tap location to enter
+      <div className="pointer-events-none absolute bottom-4 left-4 flex flex-col gap-1 font-mono text-[11px] uppercase tracking-widest text-zinc-300">
+        <span>Drag to rotate · Scroll to zoom · Tap location to enter</span>
+        {iss && (
+          <span className="inline-flex items-center gap-1.5 text-zinc-300">
+            <span
+              className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.65)]"
+              aria-hidden
+            />
+            <span>LIVE: ISS (TLE tracking)</span>
+          </span>
+        )}
       </div>
 
       {selected && (

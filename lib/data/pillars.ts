@@ -43,6 +43,8 @@ export const pillars: Pillar[] = [
       "Hands-on hardware design, from a custom designed cloud chamber to laser optics experiments — combining circuits, sensors, and data into complete physical systems.",
     skills: [
       "Electrical / Hardware Interfacing",
+      "Microcontrollers",
+      "Optical Sensors",
       "CAD (Fusion 360) · 3D Printing",
       "Laser Optics Experiments",
       "End-to-End System Design",
