@@ -233,8 +233,19 @@ export const projects: Project[] = [
     title: "LiFi: Transmitting Data via Light Waves",
     categories: ["electrical-engineering"],
     summary:
-      "Built a laser and phototransistor link that pulses binary-encoded text between two Arduinos over light, then calculated transmission accuracy against distance from 50cm to 300cm.",
-    stack: ["Arduino", "Laser Diode", "Phototransistor", "Serial Comms"],
+      "Built a laser and phototransistor link that pulses binary-encoded text between two Arduinos over light. Built a two-node optical data transmission circuit using dual Arduino microcontrollers, pulsing a red laser diode at 100ms intervals to encode and transmit binary text data across varied distances in free space. Integrated optical components, specifically a phototransistor in series with a 10kΩ potentiometer to convert incoming laser pulses into voltage signals and analyze serial text output.",
+    highlights: [
+      "Characterized signal degradation across variable path lengths, across 10 trials from 50cm to 300cm to quantify how beam divergence and ambient optical noise impact text recovery accuracy.",
+      "Evaluated physical constraints of low-cost photodetectors, determining that detector surface area, sensor hysteresis, and background light limit accurate data transmission over longer ranges.",
+      "Proposed experimental optimizations, including methods to increase SNR through narrow-band filtering, focused photodiode arrays, and short-wavelength UV sources.",
+    ],
+    stack: [
+      "Arduino",
+      "Red Laser Diode",
+      "Phototransistor",
+      "10kΩ Potentiometer",
+      "Serial Comms",
+    ],
     tags: ["Electrical Engineering", "Optical Communication"],
     date: "2023-11-01",
     image: "/projects/lifi-poster.jpg",
