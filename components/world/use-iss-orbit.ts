@@ -1,14 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  buildIssPaths,
-  geoPointFromSatrec,
-  sampleIssOrbit,
-  satrecFromTle,
-  type GeoPoint,
-  type IssPath,
-} from "@/lib/world/satellite-orbit";
+import type { GeoPoint, IssOrbitPayload, IssPath } from "@/lib/world/iss-types";
 
 export interface IssOrbitState {
   name: string;
@@ -25,30 +18,26 @@ export function useIssOrbit() {
 
     async function load() {
       try {
-        const res = await fetch("/api/satellite-tle");
+        const res = await fetch("/api/iss-orbit");
         if (!res.ok) return;
-        const data = (await res.json()) as {
-          name: string;
-          line1: string;
-          line2: string;
-        };
-
-        const satrec = satrecFromTle(data.line1, data.line2);
-        const now = new Date();
-        const { orbit } = sampleIssOrbit(satrec, now);
-        const position = geoPointFromSatrec(satrec, now);
-        if (!position || cancelled) return;
+        const data = (await res.json()) as IssOrbitPayload;
+        if (cancelled) return;
 
         setIss({
-          name: data.name.replace(/^0\s+/, "") || "ISS",
-          paths: buildIssPaths(orbit),
-          position,
+          name: data.name,
+          paths: data.paths,
+          position: data.position,
         });
 
-        tick = setInterval(() => {
-          const next = geoPointFromSatrec(satrec, new Date());
-          if (!next || cancelled) return;
-          setIss((prev) => (prev ? { ...prev, position: next } : prev));
+        tick = setInterval(async () => {
+          try {
+            const posRes = await fetch("/api/iss-position");
+            if (!posRes.ok || cancelled) return;
+            const next = (await posRes.json()) as GeoPoint;
+            setIss((prev) => (prev ? { ...prev, position: next } : prev));
+          } catch {
+            // keep last known position
+          }
         }, 1000);
       } catch {
         // ISS overlay is optional — globe still works without it.

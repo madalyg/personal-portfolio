@@ -40,7 +40,7 @@ import {
 } from "@/components/world/space-door";
 import { issHoverLabelHtml } from "@/components/world/iss-hover-label";
 import { useIssOrbit } from "@/components/world/use-iss-orbit";
-import type { IssPath } from "@/lib/world/satellite-orbit";
+import type { IssPath } from "@/lib/world/iss-types";
 
 const Globe = dynamic(
   () => import("three").then(() => import("react-globe.gl")),

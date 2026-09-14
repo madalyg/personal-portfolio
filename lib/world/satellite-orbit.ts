@@ -1,3 +1,4 @@
+import "server-only";
 import * as satellite from "satellite.js";
 
 /** Globe altitude units: multiples of Earth radius (km → alt = km / R). */
