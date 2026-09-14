@@ -16,6 +16,7 @@ export interface Project {
   title: string;
   categories: ProjectCategorySlug[];
   summary: string;
+  highlights?: string[];
   stack: string[];
   tags: string[];
   date: string; // ISO string, display formatted (start date if ongoing)

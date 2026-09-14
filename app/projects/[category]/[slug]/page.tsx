@@ -92,6 +92,14 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             {project.summary}
           </p>
 
+          {project.highlights && project.highlights.length > 0 && (
+            <ul className="max-w-2xl list-disc space-y-3 pl-5 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+              {project.highlights.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          )}
+
           <div className="flex flex-wrap gap-2 border-t border-zinc-200 pt-6 dark:border-zinc-800">
             {project.tags.map((tag) => (
               <Tag key={tag}>[{tag}]</Tag>
