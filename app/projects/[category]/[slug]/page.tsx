@@ -40,7 +40,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     <div className="container-page py-16 sm:py-20">
       <Link
         href={`/projects/${category.slug}`}
-        className="group inline-flex items-center gap-2 font-mono text-sm uppercase tracking-widest text-zinc-700 transition-colors duration-200 hover:text-accent dark:text-zinc-300"
+        className="group link-action inline-flex items-center gap-2 font-mono text-sm uppercase tracking-widest"
       >
         <ArrowLeft
           className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5"

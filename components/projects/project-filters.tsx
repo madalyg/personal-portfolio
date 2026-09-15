@@ -126,8 +126,8 @@ function FilterChip({
       className={cn(
         "rounded-sm border px-3 py-1.5 font-mono text-xs uppercase tracking-wide transition-colors duration-200",
         active
-          ? "border-accent/40 bg-accent/10 text-accent"
-          : "border-zinc-200 text-zinc-700 hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:text-zinc-100"
+          ? "border-accent/40 bg-accent/10 text-accent dark:border-accent/55 dark:bg-accent/15"
+          : "border-zinc-200 text-zinc-700 hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-600 dark:text-zinc-200 dark:hover:border-zinc-500 dark:hover:text-white"
       )}
     >
       {label}
@@ -155,7 +155,7 @@ function ViewButton({
         "rounded-[3px] p-1.5 transition-colors duration-200",
         active
           ? "bg-zinc-100 text-accent dark:bg-zinc-800"
-          : "text-zinc-600 hover:text-zinc-800 dark:hover:text-zinc-200"
+          : "text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-100"
       )}
     >
       <Icon className="h-3.5 w-3.5" strokeWidth={1.5} />

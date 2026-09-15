@@ -66,20 +66,14 @@ export function Hero() {
               style={{ gridArea: "cta" }}
               className="animate-fade-up flex flex-wrap items-center justify-center gap-4 pt-2 opacity-0 [animation-delay:160ms] sm:justify-start"
             >
-              <Link
-                href="/projects"
-                className="group inline-flex items-center gap-2 rounded-sm border border-accent/40 bg-accent/10 px-5 py-2.5 font-mono text-sm uppercase tracking-widest text-accent-dim transition-all duration-300 ease-precise hover:bg-accent/20"
-              >
+              <Link href="/projects" className="group btn-primary">
                 View Projects
                 <ArrowUpRight
                   className="h-3.5 w-3.5 transition-transform duration-300 ease-precise group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   strokeWidth={2}
                 />
               </Link>
-              <Link
-                href="/research"
-                className="group inline-flex items-center gap-2 rounded-sm border border-zinc-300 px-5 py-2.5 font-mono text-sm uppercase tracking-widest text-zinc-800 transition-all duration-300 ease-precise hover:border-zinc-400 hover:text-zinc-950 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-500 dark:hover:text-zinc-50"
-              >
+              <Link href="/research" className="group btn-secondary">
                 Read Research
                 <ArrowUpRight
                   className="h-3.5 w-3.5 transition-transform duration-300 ease-precise group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
