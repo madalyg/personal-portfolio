@@ -26,7 +26,7 @@ export function SiteFooter() {
                 target={link.icon !== "mail" ? "_blank" : undefined}
                 rel="noreferrer"
                 aria-label={link.label}
-                className="rounded-sm p-2 text-zinc-700 transition-colors duration-200 hover:text-accent dark:text-zinc-300"
+                className="rounded-sm p-2 text-zinc-700 transition-colors duration-200 hover:text-accent dark:text-zinc-200 dark:hover:text-accent"
               >
                 <Icon className="h-4 w-4" strokeWidth={1.5} />
               </a>

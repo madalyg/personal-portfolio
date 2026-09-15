@@ -37,7 +37,7 @@ export function ContactSection() {
               >
                 <div className="flex items-center gap-4">
                   <Icon
-                    className="h-7 w-7 shrink-0 text-zinc-600 transition-colors duration-300 group-hover:text-accent dark:text-zinc-300"
+                    className="h-7 w-7 shrink-0 text-zinc-600 transition-colors duration-300 group-hover:text-accent dark:text-zinc-200 dark:group-hover:text-accent"
                     strokeWidth={1.5}
                   />
                   <div className="flex flex-col">
@@ -50,7 +50,7 @@ export function ContactSection() {
                   </div>
                 </div>
                 <ArrowUpRight
-                  className="h-4 w-4 text-zinc-600 transition-all duration-300 ease-precise group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                  className="h-4 w-4 text-zinc-600 transition-all duration-300 ease-precise group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent dark:text-zinc-300 dark:group-hover:text-accent"
                   strokeWidth={1.5}
                 />
               </a>

@@ -16,7 +16,7 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="group mt-2 inline-flex items-center gap-2 rounded-sm border border-zinc-300 px-5 py-2.5 font-mono text-sm uppercase tracking-widest text-zinc-800 transition-all duration-300 hover:border-accent/40 hover:text-accent dark:border-zinc-700 dark:text-zinc-200"
+        className="group btn-secondary mt-2 hover:border-accent/40 hover:text-accent dark:hover:text-accent"
       >
         <ArrowLeft
           className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5"

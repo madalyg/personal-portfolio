@@ -60,7 +60,7 @@ export function SiteHeader() {
                     "relative rounded-sm px-3 py-2 font-mono text-sm uppercase tracking-widest transition-colors duration-200",
                     isActive
                       ? "text-zinc-950 dark:text-zinc-50"
-                      : "text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
+                      : "text-zinc-700 hover:text-zinc-900 dark:text-zinc-200 dark:hover:text-accent"
                   )}
                 >
                   {link.label}
@@ -80,7 +80,7 @@ export function SiteHeader() {
               onClick={() => setIsMenuOpen((open) => !open)}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
-              className="flex h-9 w-9 items-center justify-center rounded-sm border border-zinc-200 text-zinc-700 transition-colors duration-200 hover:border-accent/40 hover:text-accent dark:border-zinc-800 dark:text-zinc-300"
+              className="flex h-9 w-9 items-center justify-center rounded-sm border border-zinc-200 text-zinc-700 transition-colors duration-200 hover:border-accent/40 hover:text-accent dark:border-zinc-600 dark:text-zinc-200 dark:hover:border-accent/50 dark:hover:text-accent"
             >
               {isMenuOpen ? (
                 <X className="h-4 w-4" strokeWidth={1.5} />
@@ -105,7 +105,7 @@ export function SiteHeader() {
                     "rounded-sm px-2 py-3 font-mono text-sm uppercase tracking-widest transition-colors duration-200",
                     isActive
                       ? "text-accent"
-                      : "text-zinc-700 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-zinc-50"
+                      : "text-zinc-700 hover:text-zinc-950 dark:text-zinc-200 dark:hover:text-accent"
                   )}
                 >
                   {link.label}
