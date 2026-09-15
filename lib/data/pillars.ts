@@ -40,7 +40,7 @@ export const pillars: Pillar[] = [
     index: "03",
     title: "Electrical & Hardware Systems",
     description:
-      "Hands-on harware design, from a custom designed cloud chamber to laser optics experiments — combining circuits, sensors, and data into complete physical systems.",
+      "Hands-on hardware design, from a custom designed cloud chamber to laser optics experiments — combining circuits, sensors, and data into complete physical systems.",
     skills: [
       "Electrical / Hardware Interfacing",
       "Microcontrollers",
