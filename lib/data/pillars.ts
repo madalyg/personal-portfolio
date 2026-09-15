@@ -9,9 +9,9 @@ export interface Pillar {
 export const pillars: Pillar[] = [
   {
     index: "01",
-    title: "Software Engineering",
+    title: "Software Engineering & Embedded Systems",
     description:
-      "Over two years building consumer-facing and internal software at T-Mobile: the full lifecycle, from architecture and algorithm design to CI/CD deployment.",
+      "Over two years building consumer-facing and internal software on the Internet-of-Things team at T-Mobile: the full lifecycle, from architecture and algorithm design to CI/CD deployment.",
     skills: [
       "Python / Java / TypeScript / C++",
       "AWS · PostgreSQL · Node.js · Flask",
@@ -40,7 +40,7 @@ export const pillars: Pillar[] = [
     index: "03",
     title: "Electrical & Hardware Systems",
     description:
-      "Hands-on hardware design, from a custom designed cloud chamber to laser optics experiments — combining circuits, sensors, and data into complete physical systems.",
+      "Hands-on harware design, from a custom designed cloud chamber to laser optics experiments — combining circuits, sensors, and data into complete physical systems.",
     skills: [
       "Electrical / Hardware Interfacing",
       "Microcontrollers",
