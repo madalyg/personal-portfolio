@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { SITE, SITE_URL } from "@/lib/seo/site";
 
 // Applies the saved theme before hydration so there's no flash on load.
 // Unset visitors default to light — not the OS color scheme.
@@ -19,15 +20,43 @@ const THEME_INIT_SCRIPT = `
 `;
 
 export const metadata: Metadata = {
-  title: "Madaly G — Multipassionate Software Engineer & Computational Physicist",
-  description:
-    "Portfolio of Madaly G — multipassionate software engineer and computational physicist working across distributed systems, numerical simulation, and electrical engineering. B.S. Physics, M.S. Electrical Engineering (in progress).",
-  metadataBase: new URL("https://madalyg.dev"),
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE.defaultTitle,
+    template: `%s | ${SITE.personName}`,
+  },
+  description: SITE.defaultDescription,
+  applicationName: SITE.personName,
+  authors: [{ name: SITE.personName, url: SITE.url }],
+  creator: SITE.personName,
+  publisher: SITE.personName,
+  keywords: [
+    SITE.personName,
+    SITE.brandName,
+    "Madaly Gregory portfolio",
+    "software engineer",
+    "computational physicist",
+    "computational astrophysics",
+    ...SITE.knowsAbout,
+  ],
+  alternates: { canonical: SITE.url },
   openGraph: {
-    title: "Madaly G — Multipassionate Software Engineer & Computational Physicist",
-    description:
-      "Building at the intersection of software, physics, and circuits.",
+    title: SITE.defaultTitle,
+    description: SITE.defaultDescription,
+    url: SITE.url,
+    siteName: SITE.personName,
+    locale: SITE.locale,
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE.defaultTitle,
+    description: SITE.defaultDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
   },
 };
 

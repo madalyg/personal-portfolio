@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { travelGalleries, getTravelGalleryBySlug } from "@/lib/data/travel-galleries";
 import { withMediaVersions, listTravelMedia } from "@/lib/media-version";
 import { GalleryGrid } from "@/components/world/gallery-grid";
+import { pageMetadata } from "@/lib/seo/page-metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -22,10 +23,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const gallery = getTravelGalleryBySlug(slug);
   if (!gallery) return {};
-  return {
-    title: `${gallery.location} — Madaly G`,
-    description: `Photos from ${gallery.location}.`,
-  };
+  return pageMetadata({
+    title: gallery.location,
+    description: `Travel photos from ${gallery.location} — Madaly Gregory.`,
+    path: `/world/${slug}`,
+  });
 }
 
 export default async function TravelGalleryPage({ params }: PageProps) {
