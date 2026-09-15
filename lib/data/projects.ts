@@ -135,7 +135,11 @@ export const projects: Project[] = [
     title: "Extremely High Velocity Quasar Outflow Research Pipeline",
     categories: ["computational-physics"],
     summary:
-      "My previous working branch of the UW Bothell quasar research group's collaborative codebase: Python tools for normalizing raw SDSS spectra, flagging absorption troughs, and running cross-correlation, redshift, and variability analyses to isolate extremely high-velocity outflow (EHVO) quasars from the DR16 sample. Note: Most up to date codebase is hosted on a private repository, commits to be merged later.",
+      "My previous working branch of the UW Bothell quasar research group's collaborative codebase: Python tools for normalizing raw SDSS spectra, flagging absorption troughs, and running cross-correlation, redshift, and variability analyses to isolate extremely high-velocity outflow (EHVO) quasars from the DR16 sample. Using this pipeline I successfully identified the second-fastest outflow in the universe; it is scaled to process thousands of spectra at a time. Note: Most up to date codebase is hosted on a private repository, commits to be merged later.",
+    highlights: [
+      "Successfully identified the second-fastest outflow in the universe with this automated analysis pipeline.",
+      "Scaled the workflow to batch-process thousands of SDSS spectra per run.",
+    ],
     stack: [
       "Python",
       "NumPy",
