@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { GlobeExperience } from "@/components/world/globe-experience";
+import { pageMetadata } from "@/lib/seo/page-metadata";
 
-export const metadata: Metadata = {
-  title: "World — Madaly G",
+export const metadata: Metadata = pageMetadata({
+  title: "World",
   description:
-    "An interactive 3D globe of places I've traveled — tap a location to enter, and open the gallery where photos are available.",
-};
+    "Madaly Gregory — interactive travel globe with photo galleries from places around the world.",
+  path: "/world",
+});
 
 export default function WorldPage() {
   return (

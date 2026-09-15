@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { categories, getCategory } from "@/lib/data/categories";
 import { getAllTags, getProjectsByCategory } from "@/lib/data/projects";
 import { ProjectFilters } from "@/components/projects/project-filters";
+import { pageMetadata } from "@/lib/seo/page-metadata";
 
 interface PageProps {
   params: Promise<{ category: string }>;
@@ -20,10 +21,11 @@ export async function generateMetadata({
   const { category: slug } = await params;
   const category = getCategory(slug);
   if (!category) return {};
-  return {
-    title: `${category.label} Projects — Madaly G`,
-    description: category.description,
-  };
+  return pageMetadata({
+    title: `${category.label} Projects`,
+    description: `${category.description} — projects by Madaly Gregory.`,
+    path: `/projects/${slug}`,
+  });
 }
 
 export default async function CategoryProjectsPage({ params }: PageProps) {

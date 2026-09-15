@@ -25,7 +25,7 @@ export function Hero() {
               style={{ gridArea: "heading" }}
               className="animate-fade-up min-w-0 max-w-4xl text-balance text-center text-5xl font-medium leading-[1.1] tracking-tight text-zinc-950 opacity-0 sm:text-left sm:text-6xl md:text-7xl dark:text-zinc-50"
             >
-              {/* Hi, I&apos;m <span className="text-accent">Madaly</span> */}
+              <span className="sr-only">Madaly Gregory — </span>
               <span className="text-zinc-950 dark:text-zinc-50">MADALY</span>
             </h1>
 

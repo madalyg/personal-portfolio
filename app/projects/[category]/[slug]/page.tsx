@@ -7,6 +7,7 @@ import { categories, getCategory } from "@/lib/data/categories";
 import { getProjectBySlug, projects } from "@/lib/data/projects";
 import { formatDate } from "@/lib/utils";
 import { Tag } from "@/components/ui/tag";
+import { pageMetadata } from "@/lib/seo/page-metadata";
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>;
@@ -24,10 +25,11 @@ export async function generateMetadata({
   const { category: categorySlug, slug } = await params;
   const project = getProjectBySlug(categorySlug, slug);
   if (!project) return {};
-  return {
-    title: `${project.title} — Madaly G`,
-    description: project.summary,
-  };
+  return pageMetadata({
+    title: project.title,
+    description: `${project.summary} — Madaly Gregory.`,
+    path: `/projects/${categorySlug}/${slug}`,
+  });
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {

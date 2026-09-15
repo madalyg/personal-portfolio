@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/page-metadata";
 import { categories } from "@/lib/data/categories";
 import { CategoryTile } from "@/components/projects/category-tile";
 import { PageIntro } from "@/components/ui/page-intro";
 
-export const metadata: Metadata = {
-  title: "Projects — Madaly G",
+export const metadata: Metadata = pageMetadata({
+  title: "Projects",
   description:
-    "Technical projects spanning software engineering, computational physics, and electrical engineering.",
-};
+    "Projects by Madaly Gregory — software engineering, computational physics, and electrical engineering work.",
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (
