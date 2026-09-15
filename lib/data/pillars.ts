@@ -26,7 +26,7 @@ export const pillars: Pillar[] = [
     index: "02",
     title: "Computational Physics",
     description:
-      "Physics research applying machine learning and numerical methods to astrophysics data, from quasar outflows to orbital debris risk.",
+      "Physics research applying machine learning and numerical methods to astrophysics and optical sensor data, from supermassive black holes to orbital mechanics.",
     skills: [
       "Monte Carlo Analysis",
       "Signal Processing (FFT, Denoising)",
