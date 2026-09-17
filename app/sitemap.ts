@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { categories } from "@/lib/data/categories";
 import { projects } from "@/lib/data/projects";
 import { travelGalleries } from "@/lib/data/travel-galleries";
-import { BIO_PAGE_ENABLED } from "@/lib/data/site";
+import { BIO_PAGE_ENABLED, REAL_ESTATE_PAGE_ENABLED } from "@/lib/data/site";
 import { SITE_URL } from "@/lib/seo/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/research",
     "/world",
     "/flight-log",
-    "/real-estate",
+    ...(REAL_ESTATE_PAGE_ENABLED ? ["/real-estate"] : []),
     ...(BIO_PAGE_ENABLED ? ["/recognition"] : []),
   ];
 
