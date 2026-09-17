@@ -214,7 +214,15 @@ export const projects: Project[] = [
     title: "Portable Electric Cloud Chamber",
     categories: ["electrical-engineering"],
     summary:
-      "Designed and built a reusable, dry-ice-free cloud chamber system using eight cascaded Peltier thermoelectric coolers and a closed-loop water cooling system, sustaining the −26°C gradient needed to visualize ionizing radiation tracks inlcuding cosmic rays. Collaborated with mechanical engineer Branden Floyd who taught me how to solder, 3D print, and design the cooling system. Invited to present the device to the college's Board of Trustees, made available to students as a public demonstration tool, and awarded Outstanding STEM Project.",
+      "Designed and built a reusable, dry-ice-free cloud chamber system using eight cascaded Peltier thermoelectric coolers and a closed-loop water cooling system, sustaining the −26°C gradient needed to visualize ionizing radiation tracks including cosmic rays. Collaborated with mechanical engineer Branden Floyd who taught me how to solder, 3D print, and design the cooling system. Invited to present the device to the college's Board of Trustees, made available to students as a public demonstration tool, and awarded Outstanding STEM Project.",
+    highlights: [
+      "Started from explicit build constraints (budget, team skill, energy usage, and a −26 °C target), then modeled the assembly in Fusion 360: 3D-printed base with channels for coolant hoses, wiring, inset LED strips, and a aligned, sealed glass chamber.",
+      "Built a closed-loop water-cooling path (pump, radiators, aluminum blocks) and improved heat transfer with a copper spreader, thermal paste, and insulating foam around the stack and tank seal to cut parasitic heating.",
+      "Tested thermal performance after each integration step; when early Peltiers could not hold the required ΔT, iteratively replaced modules, increased supply capacity, and cascaded mixed 12712 / 12709 stages until the chamber held sub −26 °C for extended runs.",
+      "Matched drive levels to each cascade tier (13 V on the lower stage, ~9 V on the upper) and planned dedicated power dividers to feed the upper Peltiers at a regulated 9 V instead of an improvised battery hookup—prioritizing safe, repeatable power delivery.",
+      "Chose Peltier stacks over compressor refrigeration to reach chamber temperatures without hazardous fluids such as freon. Replaced with a portable, dry-ice-free setup suited for classroom demonstrations.",
+      "After misleading Peltier specs surfaced in testing, adopted a stricter parts workflow: verify manufacturer claims (including joule heating), favor third-party–certified hardware when data must be trusted, and re-test after every wiring or cooling change.",
+    ],
     stack: ["Fusion 360 CAD", "Peltier TECs", "DC Power Systems", "3D Printing"],
     tags: [
       "Electrical Engineering",
