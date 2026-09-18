@@ -47,7 +47,7 @@ export function SiteHeader() {
           href="/"
           className="font-mono text-xl tracking-tight text-zinc-950 transition-colors duration-200 hover:text-accent dark:text-zinc-50"
         >
-          M<span className="text-accent">/</span>G
+          MG
         </Link>
 
         <div className="flex items-center gap-2">
