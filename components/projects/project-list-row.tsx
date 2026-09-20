@@ -12,16 +12,11 @@ export function ProjectListRow({
   project: Project;
   categorySlug?: ProjectCategorySlug;
 }) {
-  const externalHref = project.links?.repo ?? project.links?.demo;
-  const href = externalHref ?? getProjectHref(project, categorySlug);
-  const externalProps = externalHref
-    ? { target: "_blank", rel: "noreferrer" }
-    : {};
+  const href = getProjectHref(project, categorySlug);
 
   return (
     <Link
       href={href}
-      {...externalProps}
       className="group grid grid-cols-1 items-start gap-3 py-5 transition-colors duration-200 hover:bg-zinc-50 dark:hover:bg-zinc-900 sm:grid-cols-12 sm:items-center sm:gap-4 sm:px-4"
     >
       <div className="flex items-center gap-2 font-mono text-sm text-zinc-700 dark:text-zinc-300 sm:col-span-2">
