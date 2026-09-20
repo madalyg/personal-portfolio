@@ -13,17 +13,12 @@ export function ProjectCard({
   project: Project;
   categorySlug?: ProjectCategorySlug;
 }) {
-  const externalHref = project.links?.repo ?? project.links?.demo;
-  const href = externalHref ?? getProjectHref(project, categorySlug);
-  const externalProps = externalHref
-    ? { target: "_blank", rel: "noreferrer" }
-    : {};
+  const href = getProjectHref(project, categorySlug);
   const thumbnail = project.cardImage ?? project.image;
 
   return (
     <Link
       href={href}
-      {...externalProps}
       className="group flex flex-col gap-5 border border-zinc-200 bg-white p-6 transition-all duration-300 ease-precise hover:border-accent/40 hover:bg-zinc-50/60 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-900/60 sm:p-7"
     >
       {thumbnail && (

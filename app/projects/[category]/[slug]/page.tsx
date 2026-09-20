@@ -110,19 +110,53 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </div>
 
         <div className="flex flex-col gap-2 border-t border-zinc-200 pt-6 dark:border-zinc-800 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0">
-          {project.links?.writeup && (
-            <Link
-              href={project.links.writeup}
-              target="_blank"
-              rel="noreferrer"
-              className="group mb-4 inline-flex items-center gap-1.5 border-b border-zinc-200 pb-4 font-mono text-xs uppercase tracking-widest text-accent-dim transition-colors duration-200 hover:text-accent dark:border-zinc-800"
-            >
-              {project.links.writeupLabel ?? "Read the Write-Up"}
-              <ArrowUpRight
-                className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                strokeWidth={1.5}
-              />
-            </Link>
+          {(project.links?.repo ||
+            project.links?.demo ||
+            project.links?.writeup) && (
+            <div className="mb-4 flex flex-col gap-3 border-b border-zinc-200 pb-4 dark:border-zinc-800">
+              {project.links?.repo && (
+                <Link
+                  href={project.links.repo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-accent-dim transition-colors duration-200 hover:text-accent"
+                >
+                  View Repository
+                  <ArrowUpRight
+                    className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    strokeWidth={1.5}
+                  />
+                </Link>
+              )}
+              {project.links?.demo && (
+                <Link
+                  href={project.links.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-accent-dim transition-colors duration-200 hover:text-accent"
+                >
+                  Live Demo
+                  <ArrowUpRight
+                    className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    strokeWidth={1.5}
+                  />
+                </Link>
+              )}
+              {project.links?.writeup && (
+                <Link
+                  href={project.links.writeup}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-accent-dim transition-colors duration-200 hover:text-accent"
+                >
+                  {project.links.writeupLabel ?? "Read the Write-Up"}
+                  <ArrowUpRight
+                    className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    strokeWidth={1.5}
+                  />
+                </Link>
+              )}
+            </div>
           )}
 
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-600">

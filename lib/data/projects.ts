@@ -157,6 +157,36 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "spenderq-lya-quasar-spectra",
+    title: "SpenderQ-LYA — ML Pipeline for Large Quasar Spectra Catalogs",
+    categories: ["computational-physics", "software-engineering"],
+    summary:
+      "Public integration layer I built from the upstream SpenderQ framework (galactic-ai/SpenderQ) for the UW Bothell quasar research group: a data-driven Python stack that embeds the Spender convolutional spectrum autoencoder to reconstruct intrinsic quasar continua, mask absorption (including the Lyman-α forest), and batch-process large spectroscopic datasets. Complements the group’s EHVO analysis pipeline as an ML-based continuum fallback when classical normalization is insufficient.",
+    highlights: [
+      "Built SpenderQ-LYA as a repository tuned for group workflows on high-volume SDSS-era quasar spectra, separate from the private EHVO branch.",
+      "Implemented SpenderQ’s redshift-invariant latent encoding so continuum reconstruction scales across redshifts in our target range without hand-tuned templates.",
+      "Uses iterative absorption masking so Ly-α forest structure can be separated from the underlying quasar spectrum in a simulation-free, data-driven way.",
+      "Structured the repo for repeatable batch runs over thousands of spectra (the same scale as the outflow search pipeline).",
+    ],
+    stack: [
+      "Python",
+      "PyTorch",
+      "Spender / SpenderQ",
+      "Convolutional Autoencoders",
+      "NumPy",
+      "SDSS Spectra",
+    ],
+    tags: ["Astrophysics", "Machine Learning", "Research Software"],
+    date: "2025-11-01",
+    ongoing: true,
+    image: "/projects/spenderq-lya-preview.png",
+    imageWidth: 1024,
+    imageHeight: 710,
+    links: {
+      repo: "https://github.com/madalyg/SpenderQ-LYA",
+    },
+  },
+  {
     slug: "monte-carlo-simulations-python",
     title: "Monte Carlo Simulations in Python",
     categories: ["computational-physics"],
