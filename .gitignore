@@ -34,6 +34,7 @@ yarn-error.log*
 next-env.d.ts
 
 # Cursor / local agent setup (keep on disk, don't publish)
+.vscode/settings.json
 .cursor/
 .cursorrules
 AGENTS.md
