@@ -6,13 +6,20 @@ export function buildPersonJsonLd() {
     "@type": "Person",
     "@id": `${SITE.url}/#person`,
     name: SITE.personName,
-    alternateName: [SITE.brandName, SITE.personName],
+    givenName: "Madaly",
+    familyName: "Gregory",
+    alternateName: SITE.brandName,
     url: SITE.url,
-    image: `${SITE.url}/profile.jpg`,
+    image: {
+      "@type": "ImageObject",
+      url: `${SITE.url}/profile.jpg`,
+      caption: `Portrait of ${SITE.personName}`,
+    },
     jobTitle: ["Software Engineer", "Computational Physicist"],
     description: SITE.defaultDescription,
     knowsAbout: SITE.knowsAbout,
     sameAs: SITE.sameAs,
+    mainEntityOfPage: { "@id": `${SITE.url}/#profilepage` },
   };
 }
 

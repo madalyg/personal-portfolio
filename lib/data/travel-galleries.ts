@@ -109,7 +109,7 @@ export const travelGalleries: TravelGallery[] = [
     location: "Paris, France",
     images: [
       "/travel/paris-france/01.jpg",
-      "/travel/paris-france/02.jpg",
+      "/travel/paris-france/02.png",
       "/travel/paris-france/03.jpg",
       "/travel/paris-france/04.mp4",
       "/travel/paris-france/05.jpg",
