@@ -3,10 +3,11 @@
   <text
     x="90"
     y="93"
+    transform="translate(90 93) scale(1 1.1) translate(-90 -93)"
     text-anchor="middle"
     dominant-baseline="central"
-    font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, monospace"
-    font-size="118"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="108"
     font-weight="700"
     fill="#000000"
     letter-spacing="-2.8"
