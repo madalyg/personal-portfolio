@@ -9,6 +9,8 @@ export const SITE = {
   personName: "Madaly Gregory",
   /** Short brand used in UI */
   brandName: "Madaly G",
+  /** Natural name variants people may use when searching for the site. */
+  alternateNames: ["Madaly G", "Madaly"],
   defaultTitle:
     "Madaly Gregory | Software Engineer & Computational Physicist",
   defaultDescription:
