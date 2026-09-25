@@ -8,7 +8,7 @@ export function buildPersonJsonLd() {
     name: SITE.personName,
     givenName: "Madaly",
     familyName: "Gregory",
-    alternateName: SITE.brandName,
+    alternateName: SITE.alternateNames,
     url: SITE.url,
     image: {
       "@type": "ImageObject",
@@ -29,7 +29,7 @@ export function buildWebSiteJsonLd() {
     "@type": "WebSite",
     "@id": `${SITE.url}/#website`,
     name: SITE.personName,
-    alternateName: SITE.brandName,
+    alternateName: SITE.alternateNames,
     url: SITE.url,
     description: SITE.defaultDescription,
     publisher: { "@id": `${SITE.url}/#person` },

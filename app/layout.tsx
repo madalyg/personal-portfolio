@@ -33,7 +33,9 @@ export const metadata: Metadata = {
   keywords: [
     SITE.personName,
     SITE.brandName,
+    ...SITE.alternateNames,
     "Madaly Gregory portfolio",
+    "Madaly Gregory official website",
     "software engineer",
     "computational physicist",
     "computational astrophysics",
