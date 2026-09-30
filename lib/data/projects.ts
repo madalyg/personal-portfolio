@@ -25,7 +25,7 @@ export const projects: Project[] = [
     title: "IoT Telemetry Health Probe",
     categories: ["software-engineering"],
     summary:
-      "A diagnostic web tool that decodes raw hex-string UDP payloads from field devices into readable telemetry — temperature, battery level, speed, status — and surfaces live service health, cutting down the team's manual testing time.",
+      "A diagnostic web tool that decodes raw hex-string UDP payloads from field devices into readable telemetry (temperature, battery level, speed, status) and outputs live service health, cutting down the team's manual testing time.",
     stack: ["JavaScript", "Python", "UDP", "REST"],
     tags: ["Backend", "Developer Tools"],
     date: "2020-11-01",
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     title: "Smart Home Device Control App",
     categories: ["software-engineering"],
     summary:
-      "React Native front-end for controlling mock smart-home devices — locks, bulbs — over a shared IoT API, with animated on/off interactions and live device state fetched on mount.",
+      "React Native front-end for controlling mock smart-home devices (locks, bulbs) over a shared IoT API, with animated on/off interactions and live device state fetched on mount.",
     stack: ["React Native", "JavaScript", "REST API"],
     tags: ["Full-Stack", "Mobile"],
     date: "2021-06-01",
@@ -225,7 +225,7 @@ export const projects: Project[] = [
     title: "Measuring the Fundamental Planck's Constant Using LEDs",
     categories: ["computational-physics"],
     summary:
-      "Derived Planck's constant from scratch by measuring the threshold voltage of four LED colors and relating the slope of voltage-vs-frequency to h — landing within 3.7% of the accepted value using a low-cost breadboard circuit.",
+      "Derived Planck's constant from scratch by measuring the threshold voltage of four LED colors and relating the slope of voltage-vs-frequency to h, landing within 3.7% of the accepted value using a low-cost breadboard circuit.",
     stack: ["Breadboard Circuit", "Multimeter", "Linear Regression"],
     tags: ["Quantum Mechanics", "Experimental Physics"],
     date: "2024-03-14",
@@ -300,7 +300,7 @@ export const projects: Project[] = [
     title: "Quantum Random Number Generator Circuit",
     categories: ["electrical-engineering"],
     summary:
-      "Experimental optics and embedded firmware to harvest random bits from quantum vacuum fluctuations and photon polarization — comparing dual photoresistor paths on an Arduino and mapping optical states to binary output.",
+      "Experimental optics and embedded firmware to harvest random bits from quantum vacuum fluctuations and photon polarization, comparing dual photoresistor paths on an Arduino and mapping optical states to binary output.",
     highlights: [
       "Designed and built an experimental optical setup utilizing an Arduino Uno, 5V red laser diode, beam-splitter cube, and photoresistors to measure quantum vacuum fluctuations and photon polarization states.",
       "Designed custom 3D-printed component mounts in CAD to align and stabilize laser optics and polarization beam-splitters along a precise horizontal axis.",
