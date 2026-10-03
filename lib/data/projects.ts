@@ -80,7 +80,7 @@ export const projects: Project[] = [
     title: "Synapse — AI-Powered Automatic Task Prioritization",
     categories: ["software-engineering"],
     summary:
-      "A web app that bridges daily to-do lists and long-term goals: tasks pulled from Google Calendar/Tasks are auto-scored on urgency and goal-alignment, plotted on a live Eisenhower Matrix, and paired with a Groq-powered AI coach that flags misaligned tasks and suggests schedule adjustments.",
+      "Hack the Future 2026 build: bridges daily to-do lists and weekly goals via Google Calendar/Tasks, deterministic urgency scoring, Groq JSON prompts for importance and coaching, Eisenhower Matrix UI, and calendar slot suggestions with local fallbacks (see repo docs/llm-integration.md).",
     stack: [
       "React",
       "Groq API",
@@ -91,7 +91,7 @@ export const projects: Project[] = [
     tags: ["AI", "Full-Stack", "Mobile", "Data"],
     date: "2026-04-25",
     links: {
-      repo: "https://github.com/madalyg/Synapse3",
+      repo: "https://github.com/madalyg/Synapse",
       demo: "https://synapse3-topaz.vercel.app",
     },
   },
