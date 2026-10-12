@@ -5,7 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { SITE, SITE_URL } from "@/lib/seo/site";
+import { GA_MEASUREMENT_ID, SITE, SITE_URL } from "@/lib/seo/site";
 
 // Applies the saved theme before hydration so there's no flash on load.
 // Unset visitors default to light — not the OS color scheme.
@@ -76,6 +76,18 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col bg-white font-sans dark:bg-zinc-950">
         <Script id="theme-init" strategy="beforeInteractive">
           {THEME_INIT_SCRIPT}
+        </Script>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
         </Script>
         <SiteHeader />
         <main className="flex-1">{children}</main>

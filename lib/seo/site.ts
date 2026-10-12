@@ -3,6 +3,9 @@ import { SOCIAL_LINKS } from "@/lib/data/social";
 /** Canonical production origin — keep in sync with your hosting custom domain. */
 export const SITE_URL = "https://madaly.space";
 
+/** Google Analytics 4 measurement ID (public in page source). */
+export const GA_MEASUREMENT_ID = "G-4LKR3TM8TJ";
+
 export const SITE = {
   url: SITE_URL,
   /** Legal / indexing name — use in schema.org and meta author fields. */
