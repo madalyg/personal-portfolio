@@ -7,7 +7,7 @@ Router) and React.
 
 - **Next.js 16** (App Router, Server Components, async `params`)
 - **React 19**
-- **Tailwind CSS v4** (CSS-first config via `@theme` in `app/globals.css` —
+- **Tailwind CSS v4** (CSS-first config via `@theme` in `app/globals.css`,
   there's no `tailwind.config.ts`, theme tokens live in the CSS file)
 - **Geist Sans / Geist Mono** via the [`geist`](https://www.npmjs.com/package/geist) package
 - **Lucide React** for icons
@@ -66,5 +66,5 @@ call sites (`CategoryTile`, `ResearchCard`) only need `pattern` replaced with
 an `imageUrl`/`<Image>`.
 
 ## Notes
-- Dynamic route `params` are async per Next.js 15+/16 conventions
+- Dynamic route `params` are async per Next.js 16 conventions
   (`await params` in `generateMetadata` and the page component).
