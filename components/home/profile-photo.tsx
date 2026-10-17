@@ -2,7 +2,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { User } from "lucide-react";
 
-const CANDIDATES = ["profile.jpg", "profile.jpeg", "profile.png", "profile.webp"];
+const CANDIDATES = [
+  "profile-pic-2.jpg",
+  "profile.jpg",
+  "profile.jpeg",
+  "profile.png",
+  "profile.webp",
+];
 
 function findProfileImage(): string | null {
   for (const file of CANDIDATES) {
@@ -21,9 +27,8 @@ interface ProfilePhotoProps {
 }
 
 /**
- * Renders the hero portrait. Drop a photo into `/public` named `profile.jpg`
- * (or .jpeg/.png/.webp) and it will automatically replace this placeholder —
- * no code changes needed.
+ * Renders the hero portrait. `profile-pic-2.jpg` is preferred; legacy
+ * `profile.jpg` (or .jpeg/.png/.webp) names remain supported.
  */
 export function ProfilePhoto({
   src: srcOverride,

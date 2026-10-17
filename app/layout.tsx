@@ -49,13 +49,15 @@ export const metadata: Metadata = {
     siteName: SITE.personName,
     locale: SITE.locale,
     type: "website",
-    images: [{ url: "/profile.jpg", alt: `Portrait of ${SITE.personName}` }],
+    images: [
+      { url: "/profile-pic-2.jpg", alt: `Portrait of ${SITE.personName}` },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.defaultTitle,
     description: SITE.defaultDescription,
-    images: ["/profile.jpg"],
+    images: ["/profile-pic-2.jpg"],
   },
   robots: {
     index: true,
