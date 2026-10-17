@@ -12,7 +12,7 @@ export function buildPersonJsonLd() {
     url: SITE.url,
     image: {
       "@type": "ImageObject",
-      url: `${SITE.url}/profile.jpg`,
+      url: `${SITE.url}/profile-pic-2.jpg`,
       caption: `Portrait of ${SITE.personName}`,
     },
     jobTitle: ["Software Engineer", "Computational Physicist"],

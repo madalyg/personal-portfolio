@@ -46,7 +46,7 @@ export function Hero() {
               software + embedded systems engineering, and a B.S. in Physics as
               a first-generation graduate, I&apos;ve presented computational
               astrophysics research internationally and am preparing for
-              graduate studies in Electrical Engineering focused on autonomous
+              graduate studies in Electrical and Computer Engineering focused on autonomous
               spacecraft systems.
             </p>
 
