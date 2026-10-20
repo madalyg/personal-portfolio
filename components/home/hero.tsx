@@ -7,9 +7,6 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden">
       <AuroraCanvas />
-      {/* Grid backdrop only shows in light mode — dark mode gets the
-          aurora scene above instead. */}
-      <div className="bg-grid-fade absolute inset-0 dark:hidden" />
 
       <div className="container-page relative py-16 sm:py-24 md:py-32">
         <div className="relative">
