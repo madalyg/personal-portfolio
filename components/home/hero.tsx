@@ -76,7 +76,7 @@ export function Hero() {
             >
               {[
                 { label: "Degree", value: "B.S. Physics" },
-                { label: "Upcoming", value: "M.S. EE" },
+                { label: "Upcoming", value: "M.S. ECE" },
                 { label: "Based In", value: "Seattle" },
               ].map((item) => (
                 <div key={item.label} className="flex flex-col gap-1">
