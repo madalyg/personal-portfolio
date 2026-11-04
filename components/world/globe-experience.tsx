@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import Papa from "papaparse";
-import { Eye, X } from "lucide-react";
+import { Eye, Info, X } from "lucide-react";
 import {
   AmbientLight,
   BackSide,
@@ -115,10 +115,22 @@ export function GlobeExperience() {
   const [loadError, setLoadError] = useState(false);
   const [selected, setSelected] = useState<LocationPoint | null>(null);
   const [globeReady, setGlobeReady] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(false);
   const [openNotebooks, setOpenNotebooks] = useState<PdfTravelNotebook[] | null>(
     null
   );
   const iss = useIssOrbit();
+
+  useEffect(() => {
+    if (!showInstructions) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setShowInstructions(false);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [showInstructions]);
 
   const issMarkerMesh = useMemo(
     () =>
@@ -495,10 +507,38 @@ export function GlobeExperience() {
 
       {locations && <GlobeViewfinder />}
 
-      <div className="pointer-events-none absolute bottom-4 left-4 flex flex-col gap-1 font-mono text-[11px] uppercase tracking-widest text-zinc-300">
-        <span>Drag to rotate · Scroll to zoom · Tap location to enter</span>
+      <div className="absolute bottom-4 left-4 z-10 flex items-end gap-3">
+        <div className="relative">
+          <div
+            id="globe-instructions"
+            role="region"
+            aria-label="Globe instructions"
+            hidden={!showInstructions}
+            className="absolute bottom-full left-0 mb-3 w-64 rounded-md border border-white/15 bg-[#0a0f12]/95 p-4 font-mono text-[11px] uppercase tracking-widest text-zinc-200 shadow-xl shadow-black/40 backdrop-blur-md"
+          >
+            <ul className="space-y-1.5">
+              <li>Drag to rotate</li>
+              <li>Scroll to zoom</li>
+              <li>Tap a location to enter</li>
+            </ul>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowInstructions((open) => !open)}
+            aria-label={
+              showInstructions
+                ? "Hide globe instructions"
+                : "Show globe instructions"
+            }
+            aria-expanded={showInstructions}
+            aria-controls="globe-instructions"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-[#0a0f12]/80 text-zinc-300 shadow-lg shadow-black/30 transition-colors hover:border-teal-300/50 hover:text-teal-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300"
+          >
+            <Info className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+          </button>
+        </div>
         {iss && (
-          <span className="inline-flex items-center gap-1.5 text-zinc-300">
+          <span className="mb-2 inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-widest text-zinc-300">
             <span
               className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.65)]"
               aria-hidden

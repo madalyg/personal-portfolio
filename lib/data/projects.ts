@@ -100,8 +100,8 @@ export const projects: Project[] = [
     title: "Rocket Operation GNC Sim",
     categories: ["software-engineering", "computational-physics"],
     summary:
-      "Designing a C++ foundation for simulating rocket flight dynamics using custom 3D vector mathematics, including position, gravity, forces, and navigation-related calculations.",
-    stack: ["C++", "Vector3D", "Docker"],
+      "A C++ rocket-flight dynamics simulator with custom 3D vector math, gravity and thrust modeling, and fourth-order Runge-Kutta (RK4) trajectory integration. Catch2/CTest validates the integrator against closed-form projectile motion, while GitHub Actions builds and tests the simulator and verifies impact output on pushes and pull requests.",
+    stack: ["C++", "RK4", "CMake", "Catch2", "GitHub Actions", "Docker"],
     tags: ["Physics Simulation", "Numerical Methods", "GNC"],
     date: "2026-09-01",
     ongoing: true,
