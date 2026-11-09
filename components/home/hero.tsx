@@ -39,8 +39,8 @@ export function Hero() {
             >
               Software engineer and computational physicist building systems
               combining code, the physics of our universe, and hardware. With
-              7+ years of programming experience, 2+ years in Fortune 500
-              software + embedded systems engineering, and a B.S. in Physics as
+              7+ years of programming experience, 2+ years of Fortune 500
+              software engineering + IoT internships, and a B.S. in Physics as
               a first-generation graduate, I&apos;ve presented computational
               astrophysics research internationally and am preparing for
               graduate studies in Electrical and Computer Engineering focused on autonomous
