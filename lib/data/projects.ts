@@ -300,12 +300,13 @@ export const projects: Project[] = [
     title: "Quantum Random Number Generator Circuit",
     categories: ["electrical-engineering"],
     summary:
-      "Experimental optics and embedded firmware to harvest random bits from quantum vacuum fluctuations and photon polarization, comparing dual photoresistor paths on an Arduino and mapping optical states to binary output.",
+      "Experimental optics and embedded firmware to harvest random bits from quantum vacuum fluctuations and photon polarization, comparing dual photoresistor paths on an Arduino and mapping optical states to binary output. Proposed a photodiode-based redesign.",
     highlights: [
-      "Designed and built an experimental optical setup utilizing an Arduino Uno, 5V red laser diode, beam-splitter cube, and photoresistors to measure quantum vacuum fluctuations and photon polarization states.",
-      "Designed custom 3D-printed component mounts in CAD to align and stabilize laser optics and polarization beam-splitters along a precise horizontal axis.",
-      "Developed Arduino software to compare real-time photoresistor voltage outputs, convert differential sensor readings into binary data streams, and map quantum optical states to random digit outputs.",
-      "Analyzed experimental datasets and failure modes, identifying sensor weakness, temperature dependencies, and ambient optical interference as limits to true randomness in low-cost photoresistors.",
+      "Designed and built an optical setup using an Arduino Uno, 5V red laser diode, polarizing beamsplitter cube, and two photoresistors, with firmware that compares the two channel voltages to produce a 0 or 1.",
+      "Developed Arduino software to convert differential sensor readings into binary data streams, and map quantum optical states to random digit outputs.",
+      "Designed custom 3D-printed component mounts in CAD to align and stabilize the laser and beamsplitter along a level horizontal axis.",
+      "Tested the bit stream statistically: every trial returned a single repeated digit, giving 35.4% zeros (χ² = 46.2, p < 10⁻⁹), so the generator failed.",
+      "Diagnosed the failure quantitatively: a photon-flux estimate puts shot noise about 3,000× below one ADC step, polarization-dependent split ratios (Malus's law) flipped the winning channel between trials, and the 20–30 ms photoresistor response made readings depend on the previous one.",
       "Documented design revisions, evaluating a photodiode sensor replacement and laser power attenuation to eliminate detector noise and improve quantum signal isolation.",
     ],
     stack: [
