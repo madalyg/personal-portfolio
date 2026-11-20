@@ -25,7 +25,7 @@ export const projects: Project[] = [
     title: "IoT Telemetry Health Probe",
     categories: ["software-engineering"],
     summary:
-      "A diagnostic web tool that decodes raw hex-string UDP payloads from field devices into readable telemetry (temperature, battery level, speed, status) and outputs live service health, cutting down the team's manual testing time.",
+      "A diagnostic web tool that decodes raw hex string UDP payloads from field devices into readable telemetry (temperature, battery level, speed, status) and outputs live service health, cutting down the team's manual testing time. I developed the lightweight Python/Flask REST bridge to poll internal UDP telemetry endpoints and expose service health states to the web frontend.",
     stack: ["JavaScript", "Python", "UDP", "REST"],
     tags: ["Backend", "Developer Tools"],
     date: "2020-11-01",
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     title: "Smart Home Device Control App",
     categories: ["software-engineering"],
     summary:
-      "React Native front-end for controlling mock smart-home devices (locks, bulbs) over a shared IoT API, with animated on/off interactions and live device state fetched on mount.",
+      "React Native frontend for controlling mock smart home devices (locks, bulbs) over a shared IoT API, with  on/off interactions and live device state fetched.",
     stack: ["React Native", "JavaScript", "REST API"],
     tags: ["Full-Stack", "Mobile"],
     date: "2021-06-01",
@@ -44,10 +44,10 @@ export const projects: Project[] = [
   },
   {
     slug: "wifi-significant-location-classifier",
-    title: "Significant-Location Classifier from Wi-Fi Scans",
+    title: "Significant-Location Classifier from WiFi Scans",
     categories: ["software-engineering"],
     summary:
-      "Prototyped a way to infer whether a scanned Wi-Fi network corresponds to home, work, or school by clustering visit frequency and time-of-day patterns — aimed at reducing noisy location pings without extra user input.",
+      "Prototyped a way to infer whether a scanned WiFi network corresponds to home, work, or school by clustering visit frequency and time-of-day patterns. Aimed at reducing noisy location pings without extra user input.",
     stack: ["Python", "Clustering", "Decision Trees", "Pandas"],
     tags: ["Data", "Machine Learning"],
     date: "2022-08-01",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     title: "TimeSlice — AI Daily Planning Assistant",
     categories: ["software-engineering"],
     summary:
-      "Built overnight at TechTogether Seattle: a mobile app that slices the day into 'time blocks' and uses machine learning to learn routine patterns, suggest Pomodoro-style breaks, and auto-reschedule the rest of the day when a task runs long. Won the 'Planting the Seed for Growth' award.",
+      "Built an overnight prototype at TechTogether Seattle: a mobile app that slices the day into 'time blocks' and uses machine learning to learn routine patterns, suggest Pomodoro breaks, and auto-reschedule the rest of the day when a task runs long. Won the 'Planting the Seed for Growth' award.",
     stack: [
       "Python",
       "Flask",
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     title: "Rocket Operation GNC Sim",
     categories: ["software-engineering", "computational-physics"],
     summary:
-      "A C++ rocket-flight dynamics simulator with custom 3D vector math, gravity and thrust modeling, and fourth-order Runge-Kutta (RK4) trajectory integration. Catch2/CTest validates the integrator against closed-form projectile motion, while GitHub Actions builds and tests the simulator and verifies impact output on pushes and pull requests.",
+      "A C++ rocket flight dynamics simulator with custom 3D vector math, gravity and thrust modeling, and fourth-order Runge-Kutta (RK4) trajectory integration. Catch2/CTest validates the integrator against closed-form projectile motion, while GitHub Actions builds and tests the simulator and verifies impact output on pushes and pull requests.",
     stack: ["C++", "RK4", "CMake", "Catch2", "GitHub Actions", "Docker"],
     tags: ["Physics Simulation", "Numerical Methods", "GNC"],
     date: "2026-09-01",
@@ -165,7 +165,7 @@ export const projects: Project[] = [
     highlights: [
       "Built SpenderQ-LYA as a repository tuned for group workflows on high-volume SDSS-era quasar spectra, separate from the private EHVO branch.",
       "Implemented SpenderQ’s redshift-invariant latent encoding so continuum reconstruction scales across redshifts in our target range without hand-tuned templates.",
-      "Uses iterative absorption masking so Ly-α forest structure can be separated from the underlying quasar spectrum in a simulation-free, data-driven way.",
+      "Uses iterative absorption masking so Ly-α forest structure can be separated from the underlying quasar spectrum in a simulation-free, data-driven way. Implements multi-epoch ratios to improve detection of weak absorption lines.",
       "Structured the repo for repeatable batch runs over thousands of spectra (the same scale as the outflow search pipeline).",
     ],
     stack: [
@@ -207,7 +207,7 @@ export const projects: Project[] = [
     title: "Quantum Eraser: Erasing & Restoring Which-Path Information",
     categories: ["computational-physics"],
     summary:
-      "Built a polarizer-and-double-slit setup to test at what polarization angle a photon's which-path information is erased, mapping interference-fringe visibility against filter angle to pinpoint the laser's dominant polarization axis.",
+      "Built a polarizer and double slit setup to test at what polarization angle a photon's which-path information is erased, mapping interference fringe visibility against filter angle to pinpoint the laser's dominant polarization axis.",
     stack: [
       "Optics Bench",
       "High-Energy Laser",
@@ -247,11 +247,11 @@ export const projects: Project[] = [
       "Designed and built a reusable, dry-ice-free cloud chamber system using eight cascaded Peltier thermoelectric coolers and a closed-loop water cooling system, sustaining the −26°C gradient needed to visualize ionizing radiation tracks including cosmic rays. Collaborated with mechanical engineer Branden Floyd who taught me how to solder, 3D print, and design the cooling system. Invited to present the device to the college's Board of Trustees, made available to students as a public demonstration tool, and awarded Outstanding STEM Project.",
     highlights: [
       "Started from explicit build constraints (budget, team skill, energy usage, and a −26 °C target), then modeled the assembly in Fusion 360: 3D-printed base with channels for coolant hoses, wiring, inset LED strips, and a aligned, sealed glass chamber.",
-      "Built a closed-loop water-cooling path (pump, radiators, aluminum blocks) and improved heat transfer with a copper spreader, thermal paste, and insulating foam around the stack and tank seal to cut parasitic heating.",
+      "Built a closed-loop water cooling path (pump, radiators, aluminum blocks) and improved heat transfer with a copper spreader, thermal paste, and insulating foam around the stack and tank seal to cut parasitic heating.",
       "Tested thermal performance after each integration step; when early Peltiers could not hold the required ΔT, iteratively replaced modules, increased supply capacity, and cascaded mixed 12712 / 12709 stages until the chamber held sub −26 °C for extended runs.",
       "Matched drive levels to each cascade tier (13 V on the lower stage, ~9 V on the upper) and planned dedicated power dividers to feed the upper Peltiers at a regulated 9 V instead of an improvised battery hookup—prioritizing safe, repeatable power delivery.",
       "Chose Peltier stacks over compressor refrigeration to reach chamber temperatures without hazardous fluids such as freon. Replaced with a portable, dry-ice-free setup suited for classroom demonstrations.",
-      "After misleading Peltier specs surfaced in testing, adopted a stricter parts workflow: verify manufacturer claims (including joule heating), favor third-party–certified hardware when data must be trusted, and re-test after every wiring or cooling change.",
+      "After misleading Peltier specs surfaced in testing, adopted a stricter parts workflow: verify manufacturer claims (including joule heating), favor third-party certified hardware when data must be trusted, and re-test after every wiring or cooling change.",
     ],
     stack: ["Fusion 360 CAD", "Peltier TECs", "DC Power Systems", "3D Printing"],
     tags: [
