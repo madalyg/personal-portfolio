@@ -47,7 +47,7 @@ export function ProjectCard({
             )}
             {project.classified && (
               <span className="text-zinc-500 dark:text-zinc-500">
-                | Classified
+                | Internal/NDA
               </span>
             )}
           </div>

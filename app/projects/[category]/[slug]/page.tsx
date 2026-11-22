@@ -68,7 +68,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           )}
           {project.classified && (
             <span className="text-zinc-500 dark:text-zinc-500">
-              | Classified
+              | Internal/NDA
             </span>
           )}
         </div>

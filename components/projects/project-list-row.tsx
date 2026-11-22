@@ -33,7 +33,7 @@ export function ProjectListRow({
           )}
           {project.classified && (
             <span className="font-mono text-xs font-normal text-zinc-500 dark:text-zinc-500">
-              | Classified
+              | Internal/NDA
             </span>
           )}
         </h3>
